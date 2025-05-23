@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        background-image: url("../img/depan.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(6px);
+        z-index: 0;
+      }
+
+      .wrapper {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        width: 800px;
+        height: 500px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        background-color: #fff;
+      }
+
+      .left-side {
+        flex: 1;
+        background-image: url("../img/depan.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        position: relative;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .left-side::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 800%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+      }
+
+      .left-side > div {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+
+      .left-side h2 {
+        font-size: 50px;
+        margin-bottom: 10px;
+        font-weight: bolder;
+      }
+
+      .left-side p {
+        font-size: 20px;
+      }
+
+      .right-side {
+        flex: 1;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .form-box {
+        width: 100%;
+        max-width: 350px;
+      }
+      .logo {
+        width: 163px;
+        height: 120px;
+        border-radius: 10%;
+        background-color: #ffffff;
+        margin: 0 auto 20px;
+        background-image: url("../Img/Smpn4tangsel.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .form-box h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      .form-group {
+        position: relative;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 40px 12px 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .login-button {
+        width: 100%;
+        padding: 12px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 15px;
+      }
+
+      .login-button:hover {
+        background-color: rgb(241, 189, 0);
+        color: black;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        color: gray;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .wrapper {
+          flex-direction: column;
+          width: 90%;
+          height: auto;
+        }
+
+        .left-side,
+        .right-side {
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="left-side">
+        <div>
+          <h2>Welcome</h2>
+          <p>Login ke Perpustakaan SMP Negeri 4 Tangerang Selatan</p>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="form-box">
+          <div class="logo"></div>
+          <h2>Login</h2>
+          <form action="login.php" method="post">
+            <div class="form-group">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+              <img
+                class="toggle-password"
+                src="../Img/closed-eye.png"
+                alt="Toggle Password"
+                onclick="togglePassword()"
+              />
+            </div>
+            <button type="submit" class="login-button">Login →</button>
+          </form>
+          <div class="footer">
+            &copy; 2025 Dila Kartika Putri, Ris Naia Natasya, Zesi Yaqumi
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const toggleIcon = document.querySelector(".toggle-password");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleIcon.src = "../Img/open-eye.png";
+        } else {
+          passwordInput.type = "password";
+          toggleIcon.src = "../Img/closed-eye.png";
+        }
+      }
+    </script>
+  </body>
+</html>
